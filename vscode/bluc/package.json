@@ -1,0 +1,24 @@
+{
+    "name": "bluc",
+    "displayName": "BluC",
+    "version": "0.0.1",
+    "publisher": "jms",
+    "engines": {
+        "vscode": ">=0.9.0-pre.1"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "bluc",
+            "extensions": [".bluc",".bluh"],
+            "aliases": ["BluC", "Bluc", "bluc"]
+        }],
+        "grammars": [{
+            "language": "bluc",
+            "scopeName": "source.bluc",
+            "path": "./syntaxes/bluc.json"
+        }]
+    }
+}

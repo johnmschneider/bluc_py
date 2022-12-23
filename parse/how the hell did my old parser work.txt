@@ -1,0 +1,36 @@
+a + b + c
+
+======
+curTok
+    description
+a 
+    expr = lit
+    peekMatches == true
++
+    right = mult_or_higher()
+
+in mult_or_higher:
+    literal matched
+    return literal
+
+ergo
+    right = lit
+
+======
+but what if left/right is expr?
+
+a * b + c / e
+
+curTok
+    description
+
+a
+    a * b matched as multi
++
+    expr = err
+    peekMatches == true
+b
+    right = div
+
+
+how did I make this algorithm in the first place??? it works somehow

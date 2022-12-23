@@ -1,0 +1,28 @@
+{
+    "contributes": {
+        "languages": [
+            {
+                "id": "bluc",
+                "extensions": [".bluc", ".bluh"]
+            }
+        ],
+        "grammars": [
+            {
+                "languages": "abc",
+                "scopeName": "source.bluc",
+                "path": "./syntaxes/bluc.tmGrammar.json"
+            }
+        ]
+
+    }
+}
+
+{
+    "scopeName": "source.bluc",
+    "patterns": [{ "include": "#expression"}],
+    "repository": {
+        "expression": {
+            "patterns": [{ "include"}]
+        }
+    }
+}

@@ -1,0 +1,11 @@
+1) parsing sub-function rules:
+    1) each sub-function is expected to move the parser forward such that
+        parser.curToken is set to the next un-parsed token after the current
+        rule-match is done parsing
+
+2) experimental var parsing design
+    1) could 2 tokens (not matching another expr) per expr always be matched to var decl?
+    2) for instance: i8 testVar
+    3) will have to add exception for first token making sure it is not
+        a non-type keyword
+    4) i dunno let's try it

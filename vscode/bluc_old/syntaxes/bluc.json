@@ -1,0 +1,146 @@
+{
+  "fileTypes" : [
+    "bluc"
+  ],
+  "name" : "bluc",
+  "patterns" : [
+    {
+      "include" : "#main"
+    }
+  ],
+  "scopeName" : "source.bluc",
+  "repository" : {
+    "main" : {
+      "patterns" : [
+        {
+          "include" : "#type"
+        },
+        {
+          "include" : "#keyword"
+        },
+        {
+          "match" : "(\\b[a-z][a-z0-9]*)",
+          "name" : "text.bluc"
+        },
+        {
+          "include" : "#numeric"
+        },
+        {
+          "begin" : "(\\{)",
+          "beginCaptures" : {
+            "1" : {
+              "name" : "punctuation.bluc"
+            }
+          },
+          "patterns" : [
+            {
+              "include" : "#main__1"
+            }
+          ],
+          "end" : "(\\})",
+          "endCaptures" : {
+            "1" : {
+              "name" : "punctuation.bluc"
+            }
+          }
+        },
+        {
+          "match" : "(;)",
+          "name" : "punctuation.bluc"
+        },
+        {
+          "begin" : "(\")",
+          "beginCaptures" : {
+            "1" : {
+              "name" : "punctuation.bluc"
+            }
+          },
+          "contentName" : "string.bluc",
+          "end" : "(\")",
+          "endCaptures" : {
+            "1" : {
+              "name" : "punctuation.bluc"
+            }
+          }
+        },
+        {
+          "begin" : "(\\()",
+          "beginCaptures" : {
+            "1" : {
+              "name" : "punctuation.bluc"
+            }
+          },
+          "patterns" : [
+            {
+              "include" : "#main__3"
+            }
+          ],
+          "end" : "(\\))",
+          "endCaptures" : {
+            "1" : {
+              "name" : "punctuation.bluc"
+            }
+          }
+        },
+        {
+          "match" : "(\\+)|(\\-)|(=+)|(!)|(>>)|(<<)(>(=)*)|(<(=)*)",
+          "name" : "punctuation.bluc"
+        },
+        {
+          "match" : "(#.*)",
+          "name" : "comment.bluc"
+        },
+        {
+          "match" : "([^\\s])",
+          "name" : "invalid.bluc"
+        }
+      ]
+    },
+    "keyword" : {
+      "patterns" : [
+        {
+          "match" : "(fn)",
+          "name" : "keyword.bluc"
+        }
+      ]
+    },
+    "main__1" : {
+      "patterns" : [
+        {
+          "include" : "#main"
+        }
+      ]
+    },
+    "main__2" : {
+      "patterns" : [
+      ]
+    },
+    "main__3" : {
+      "patterns" : [
+        {
+          "include" : "#numeric"
+        },
+        {
+          "match" : "(,)",
+          "name" : "punctuation.bluc"
+        }
+      ]
+    },
+    "numeric" : {
+      "patterns" : [
+        {
+          "match" : "(\\b\\d+)",
+          "name" : "constant.numeric.bluc"
+        }
+      ]
+    },
+    "type" : {
+      "patterns" : [
+        {
+          "match" : "(?!\\s)((i8)|(i16)|(i32)|(i64)|(u8)|(u16)|(u32)|(u64)|(f32)|(f64)|(bool)|(char))(?=\\s)",
+          "name" : "entity.name.type.bluc"
+        }
+      ]
+    }
+  }
+}
