@@ -1,5 +1,6 @@
 from parse.token import BLUC_EOF
 from parse.exprs.expr import *
+from parse.stmts.stmt_expr import *
 
 class AstPrinter(object):
     def __init__(self, parser):
@@ -35,32 +36,36 @@ class AstPrinter(object):
 
         if issubclass(curType, Expr):
             output += self._printExpr(node, curType)
+        elif issubclass(curType, StmtExpr):
+            output += self._printStmtExpr(node, curType)
 
         return output
 
-    def _printExpr(self, curTok, curType):
+    def _printExpr(self, curExpr, curType):
         output = "("
 
         if issubclass(curType, Binary):
-            output += curTok.oper.text + " "
-            output += self._printNodeToString(curTok.leftOpd) + " "
-            output += self._printNodeToString(curTok.rightOpd) + ")"
+            output += curExpr.oper.text + " "
+            output += self._printNodeToString(curExpr.leftOpd) + " "
+            output += self._printNodeToString(curExpr.rightOpd) + ")"
 
         elif issubclass(curType, Unary):
-            output += curTok.oper.text + " "
-            output += self._printNodeToString(curTok.opd) + ")"
+            output += curExpr.oper.text + " "
+            output += self._printNodeToString(curExpr.opd) + ")"
 
         elif issubclass(curType, Grouping):
-            output += "grouping " + self._printNodeToString(curTok.inside) + ")"
+            output += "grouping " + self._printNodeToString(curExpr.inside) + ")"
 
         elif issubclass(curType, Literal):
-            output += "lit " + curTok.oper.text + ")"
+            output += "lit " + curExpr.oper.text + ")"
 
         elif issubclass(curType, VarCall):
-            output += "var-call" + curTok.varName + ")"
+            output += "var-call" + curExpr.varName + ")"
 
         else:
             output = "(parse-error)"
 
         return output
 
+    def _printStmtExpr(self, curStmt : StmtExpr, curType):
+        return self._printExpr(curStmt.expr, curType)

@@ -187,9 +187,8 @@ class Parser(object):
     # check if parser is at the end of the line (i.e. if the
     #   parser is currently on the last token of this line)
     def atEOL(self):
-        # these statements are separated into multiple
-        #   lines so the debugger can show the values
-        #   (currently, function isn't working)
+        if (self.atEOF()):
+            return True
 
         peekedTok = self.peek(1)
         curLineNum = self.curLineNumber()
